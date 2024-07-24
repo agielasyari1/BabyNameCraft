@@ -1,0 +1,39 @@
+body {
+    background: url('/static/nature.avif') no-repeat center center fixed;
+    background-size: cover;
+    color: black;
+    height: 100%;
+}
+
+.container {
+    background: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 10%;
+}
+
+h1,
+p {
+    text-align: center;
+}
+
+.form-inline {
+    justify-content: center;
+}
+
+.list-group-item {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+}
+
+.spinner-border {
+    display: none;
+    width: 3rem;
+    height: 3rem;
+    color:blue;
+    margin: 20px auto;
+}
+
+.search-container {
+    margin-bottom: 20px;
+}

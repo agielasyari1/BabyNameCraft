@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <title>Names and Translations</title>
+  <link rel="icon" type="image/x-icon" href="../static/baby.png">
+  <style>
+    .spinner-border {
+      display: none;
+      width: 3rem;
+      height: 3rem;
+      margin: 20px auto;
+      color: blue;
+    }
+
+    .search-container {
+      margin-bottom: 20px;
+    }
+
+    .footer {
+      position: relative;
+      width: 100%;
+      background-color: #f8f9fa;
+      padding: 10px 0;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .content {
+      flex: 1;
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .overlay .message {
+      font-size: 1.5rem;
+      margin-top: 10px;
+    }
+
+    .overlay .gif {
+      width: 150px;
+      height: 150px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container content">
+    <h1 class="text-center">Names and Translations</h1>
+    <p>
+      List of names taken from <a href="https://quranicnames.com" target="_blank"
+        rel="noopener noreferrer">Quranicnames</a>.
+    </p>
+    <div class="search-container text-center">
+      <form id="search-form" method="post" action="/search_results">
+        <input type="hidden" name="data_choice" value="{{ data_choice }}">
+        <input type="text" id="search-input" name="query" class="form-control mb-2" placeholder="Search for keywords"
+          value="{{ query }}">
+        <button id="search-button" class="btn btn-secondary">Search</button>
+      </form>
+    </div>
+    <ul class="list-group" id="results-list">
+      {% for name, content in results %}
+      <li class="list-group-item">
+        <strong>{{ name }}:</strong> {{ content }}
+      </li>
+      {% endfor %}
+    </ul>
+      <div class="text-center mt-4 d-flex justify-content-center">
+        <form method="post" action="/choose_data" class="mr-2">
+          <input type="hidden" name="data_choice" value="{{ data_choice }}">
+          <button id="generate-button" class="btn btn-primary">Generate New Combinations</button>
+        </form>
+        <a href="/" class="btn btn-secondary">Back to Selection</a>
+      </div>
+    <br>
+    <footer class="footer">
+      <span class="text-muted">© 2024 Agiel Asy'ari &hearts; Farida Permatasari. Created with &#10084;.</span>
+    </footer>
+  </div>
+
+  <!-- Overlay for Waiting Notification -->
+  <div id="waiting-overlay" class="overlay">
+    <div>
+      <img src="{{ url_for('static', filename='cute-gif.gif') }}" alt="Loading" class="gif">
+      <div class="message">Hope it brings a smile before nap time!</div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script>
+    function showOverlay() {
+      $('#waiting-overlay').show();
+    }
+
+    function hideOverlay() {
+      $('#waiting-overlay').hide();
+    }
+
+    $('#generate-button').click(function () {
+      showOverlay();
+    });
+
+    $('#search-form').submit(function () {
+      showOverlay();
+    });
+  </script>
+</body>
+
+</html>

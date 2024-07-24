@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Name</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='baby.png') }}">
+    <style>
+        .option-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .option-item {
+            text-align: center;
+            margin: 0 15px;
+        }
+
+        .option-item img {
+            cursor: pointer;
+            width: 100px;
+            height: 100px;
+        }
+
+        .paragraph-container {
+            margin-bottom: 20px;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .overlay .message {
+            font-size: 1.5rem;
+            margin-top: 10px;
+        }
+
+        .overlay .gif {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center">Give a Name to the Baby</h1>
+        <div class="paragraph-container">
+            <p>
+                Rasulullah mengajarkan umatnya untuk memberikan nama pada buah hati saat hari ketujuh, mencukur rambut,
+                serta aqiqah.
+                Seperti dikutip dari kitab al-Adzkar karya An-Nawawi yang mengutip hadits dari riwayat Amr bin Syu’aib
+                dari ayah dan
+                kakeknya:
+                <br><br>
+                أن النبي صل الله عليه و سلم أمر بتسمية المولود يوم سابعه، و وضع الاذى عنه، و العقّ
+                <br><br>
+                Artinya: Bahwa sesungguhnya Nabi memerintahkan untuk memberikan nama pada hari ketujuh, menghilangkan
+                kesengsaraan dari
+                padanya dan aqiqah. (Muhyiddin Dhib, Lawami’ al-Anwar; Syarh Kitab al-Adzkar, Bairut, Dar Ibn Kathir,
+                2014)
+            </p>
+            <p>
+                Rasulullah memerintah kepada umatnya untuk memberikan nama yang baik kepada anaknya. Seperti dalam
+                hadits riwayat Abi Darda’ berikut ini:
+                <br><br>
+                قال رسول الله صل الله عليه و سلم: انكم تدعون يوم القيامة باسماءكم واسماء آبائكم، فاحسنوا اسمائكم.
+                <br><br>
+                Artinya: Rasulullah Sallallahu Alaihi Wasallam bersabda; Sesungguhnya kalian akan dipanggil pada hari
+                kiamat dengan
+                nama-nama kalian dan nama bapak kalian, maka perbaguslah nama kalian. (Muhyiddin Dhib, Lawami’ al-Anwar,
+                halaman: 146)
+            </p>
+        </div>
+        <form action="/choose_data" method="post" onsubmit="showOverlay()">
+            <div class="form-group text-center">
+                <label for="data_choice">Select Data:</label>
+                <input type="hidden" id="data_choice" name="data_choice">
+                <div class="option-container">
+                    <div class="option-item">
+                        <img src="{{ url_for('static', filename='male_icon.png') }}" alt="Male Icon" id="male-button">
+                        <h5>Boys Name</h5>
+                    </div>
+                    <div class="option-item">
+                        <img src="{{ url_for('static', filename='female_icon.png') }}" alt="Female Icon"
+                            id="female-button">
+                        <h5>Girls Name</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        <footer class="footer">
+            <div class="container">
+                <div class="text-center">
+                    <span class="text-muted">© 2024 Agiel Asy'ari &hearts; Farida Permatasari. Created with
+                        &#10084;.</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Overlay for Waiting Notification -->
+    <div id="waiting-overlay" class="overlay">
+        <div>
+            <img src="{{ url_for('static', filename='cute-gif.gif') }}" alt="Loading" class="gif">
+            <div class="message">Hope it brings a smile before nap time!</div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        function showOverlay() {
+            $('#waiting-overlay').show();
+        }
+
+        function hideOverlay() {
+            $('#waiting-overlay').hide();
+        }
+
+        document.getElementById('male-button').addEventListener('click',function () {
+            document.getElementById('data_choice').value = 'male';
+            document.getElementById('male-button').style.border = '2px solid blue';
+            document.getElementById('female-button').style.border = 'none';
+        });
+
+        document.getElementById('female-button').addEventListener('click',function () {
+            document.getElementById('data_choice').value = 'female';
+            document.getElementById('female-button').style.border = '2px solid blue';
+            document.getElementById('male-button').style.border = 'none';
+        });
+    </script>
+</body>
+
+</html>

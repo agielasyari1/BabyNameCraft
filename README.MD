@@ -22,8 +22,8 @@ To get started with this project, follow these instructions to set up your devel
 1. **Clone the Repository**
 
     ```bash
-    git clone https://github.com/yourusername/baby-name-generator.git
-    cd baby-name-generator
+    git clone https://github.com/agielasyari1/BabyNameCraft.git
+    cd BabyNameCraft
     ```
 
 2. **Create a Virtual Environment**

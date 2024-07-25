@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>About Us</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='baby.png') }}">
+    <style>
+        .footer {
+            position: relative;
+            width: 100%;
+            background-color: #f8f9fa;
+            padding: 10px 0;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .content {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container content">
+        <h1 class="text-center">About Us</h1>
+        <p> <hr> 
+            <b>Trik yang bagus untuk mencari nama anak!</b>  Memilih nama memang penting karena itu adalah doa dan harapan untuk si kecil.
+            Berikut ringkasan trik yang kamu berikan: <br>
+            
+            1. Gabungkan Nama Orang Tua: Contohnya, dari Budi dan Siti bisa jadi Buti atau Sidi. Unik dan personal. <br>
+            2. Inspirasi dari Alam: Nama-nama dari alam seperti Akasia (pohon) atau Dahlia (bunga) bisa jadi pilihan. <br>
+            3. Karakter Favorit: Penggemar karakter dari buku atau film, seperti Hermione atau Luna dari Harry Potter. <br>
+            4. Arti Nama: Pilih nama dengan makna baik, misalnya Anugrah atau Bahagia. <br>
+            5. Cek Inisial: Pastikan inisial tidak membentuk singkatan yang aneh atau kurang baik. <br>
+            Nama adalah doa dan harapan, jadi pilihlah yang indah, bermakna, dan mudah diucapkan. Untuk mencari inspirasi nama, kamu
+            bisa menggunakan Baby Name Craft.
+        </p>
+        <p> <hr>
+            <b>Baby Name Craft</b> adalah sebuah website untuk membantu kamu mencari nama bayi. Di sini, kamu bisa eksplor berbagai
+            nama dengan cara yang mudah, baik berdasarkan arti, asal, atau tren terbaru. Jadi, jika kamu bingung mencari
+            nama yang cocok untuk si kecil, Baby Name Craft bisa jadi tempat yang tepat untuk mendapatkan inspirasi dan menemukan
+            nama yang pas!
+        </p>
+        <p>
+            <p> <hr>
+                Daftar nama-nama diambil dari situs <a href="https://quranicnames.com" target="_blank" rel="noopener noreferrer">[Quranicnames]</a> mencakup berbagai nama yang kaya akan
+                makna dan nilai-nilai spiritual. Website ini menawarkan koleksi nama-nama yang diambil dari Al-Qur'an dan tradisi Islam,
+                masing-masing dengan arti dan latar belakang yang mendalam. Nama-nama tersebut tidak hanya memiliki keindahan dalam
+                pelafalan, tetapi juga mengandung pesan dan doa yang baik. 
+            </p>
+        </p>
+        <p>
+            Kamu dapat juga berkontribusi dengan website ini atau mengubahnya sesuai dengan kemauan anda, open source code di
+             <a href="https://glitch.com/edit/#!/babynamecraft" target="_blank" rel="noopener noreferrer">https://glitch.com/edit/#!/babynamecraft</a>
+        </p>
+        <p> <b>
+            "Kenapa programmer suka berkarya sambil koding?
+            
+            Karena kalau tidak berkarya, kode mereka jadi bug!
+            
+            Semoga bikin kamu tersenyum! 😄"
+        </b>
+        </p>
+        <p class="text-center">
+            Thank you for visiting Baby Name Craft. We hope our service helps you in selecting a beautiful name for your
+            little one!
+        </p>
+        <div class="text-center mt-4">
+            <a href="/" class="btn btn-secondary">Back to Home</a>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <div class="text-center">
+                    <span class="text-muted">© 2024 Agiel Asy'ari &hearts; Farida Permatasari. Created with &#10084;.</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+            // Swipe detection
+                var hammertime = new Hammer(document.body);
+
+                hammertime.on('swipeleft',function () {
+                    window.location.href = '/';
+                });
+
+                hammertime.on('swiperight',function () {
+                    window.location.href = '/';
+                });
+    </script>
+</body>
+
+</html>

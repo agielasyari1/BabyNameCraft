@@ -75,6 +75,10 @@ def search():
         return jsonify(results)
     except Exception as e:
         return jsonify({'error': str(e)})
+    
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 @app.route('/search_results', methods=['POST'])
 def search_results():

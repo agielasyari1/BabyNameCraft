@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <title>Name</title>
+    <title>Baby Name Craft</title>
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='baby.png') }}">
     <style>
         .option-container {
@@ -24,6 +24,12 @@
             cursor: pointer;
             width: 100px;
             height: 100px;
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .option-item img.selected {
+            border-color: blue;
         }
 
         .paragraph-container {
@@ -60,7 +66,7 @@
 
 <body>
     <div class="container">
-        <h1 class="text-center">Give a Name to the Baby</h1>
+        <h1 class="text-center">Baby Name Craft</h1>
         <div class="paragraph-container">
             <p>
                 Rasulullah mengajarkan umatnya untuk memberikan nama pada buah hati saat hari ketujuh, mencukur rambut,
@@ -88,9 +94,9 @@
                 halaman: 146)
             </p>
         </div>
-        <form action="/choose_data" method="post" onsubmit="showOverlay()">
+        <form id="data-form" action="/choose_data" method="post" onsubmit="showOverlay()">
             <div class="form-group text-center">
-                <label for="data_choice">Select Data:</label>
+                <label for="data_choice">Select Gender:</label>
                 <input type="hidden" id="data_choice" name="data_choice">
                 <div class="option-container">
                     <div class="option-item">
@@ -104,18 +110,16 @@
                     </div>
                 </div>
             </div>
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
         </form>
         <footer class="footer">
             <div class="container">
                 <div class="text-center">
-                    <span class="text-muted">© 2024 Agiel Asy'ari &hearts; Farida Permatasari. Created with
-                        &#10084;.</span>
+                    <a href="/about" class="btn btn-secondary">About Us</a>
+                    <span class="text-muted">© 2024 Agiel Asy'ari &hearts; Farida Permatasari. Created with &#10084;.</span>
                 </div>
             </div>
         </footer>
+
     </div>
 
     <!-- Overlay for Waiting Notification -->
@@ -138,14 +142,16 @@
 
         document.getElementById('male-button').addEventListener('click',function () {
             document.getElementById('data_choice').value = 'male';
-            document.getElementById('male-button').style.border = '2px solid blue';
-            document.getElementById('female-button').style.border = 'none';
+            document.getElementById('male-button').classList.add('selected');
+            document.getElementById('female-button').classList.remove('selected');
+            document.getElementById('data-form').submit();
         });
 
         document.getElementById('female-button').addEventListener('click',function () {
             document.getElementById('data_choice').value = 'female';
-            document.getElementById('female-button').style.border = '2px solid blue';
-            document.getElementById('male-button').style.border = 'none';
+            document.getElementById('female-button').classList.add('selected');
+            document.getElementById('male-button').classList.remove('selected');
+            document.getElementById('data-form').submit();
         });
     </script>
 </body>

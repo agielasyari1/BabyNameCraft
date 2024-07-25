@@ -78,7 +78,7 @@
     <div class="search-container text-center">
       <form id="search-form" method="post" action="/search_results">
         <input type="hidden" name="data_choice" value="{{ data_choice }}">
-        <input type="text" id="search-input" name="query" class="form-control mb-2" placeholder="Search for keywords"
+        <input type="text" id="search-input" name="query" class="form-control mb-2" placeholder="Cari sifat atau perilaku, contohnya baik, sabar, cahaya"
           value="{{ query }}">
         <button id="search-button" class="btn btn-secondary">Search</button>
       </form>
@@ -99,8 +99,14 @@
       </div>
     <br>
     <footer class="footer">
-      <span class="text-muted">© 2024 Agiel Asy'ari &hearts; Farida Permatasari. Created with &#10084;.</span>
+      <div class="container">
+        <div class="text-center">
+          <a href="/about" class="btn btn-secondary">About Us</a>
+          <span class="text-muted">© 2024 Agiel Asy'ari &hearts; Farida Permatasari. Created with &#10084;.</span>
+        </div>
+      </div>
     </footer>
+
   </div>
 
   <!-- Overlay for Waiting Notification -->
@@ -128,6 +134,17 @@
     $('#search-form').submit(function () {
       showOverlay();
     });
+
+        // Swipe detection
+          var hammertime = new Hammer(document.body);
+
+          hammertime.on('swipeleft',function () {
+            window.location.href = '/';
+          });
+
+          hammertime.on('swiperight',function () {
+            window.location.href = '/';
+          });
   </script>
 </body>
 
